@@ -39,6 +39,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private int curPage = 1;
     private int multiple;
 
+    public GameObject startButton;
+
 
 #if !UNITY_EDITOR
     void Awake() => Screen.SetResolution(960, 540, false);
@@ -137,6 +139,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         for (int i = 0; i < chatText.Length; i++)
         {
             chatText[i].text = "";
+        }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            startButton.SetActive(true);
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Photon.Pun;
 
 public class SkillF : Skill
@@ -8,12 +9,15 @@ public class SkillF : Skill
     PhotonView pv;
     PlayerMove pm;
     Camera camera;
+    NavMeshAgent navAgent;
+
     public float tpLength = 3;
     // Start is called before the first frame update
     void Start()
     {
         pv = GetComponent<PhotonView>();
         pm = GetComponent<PlayerMove>();
+        navAgent = GetComponent<NavMeshAgent>();
         if (pv.IsMine)
             camera = Camera.main;
     }
@@ -41,6 +45,14 @@ public class SkillF : Skill
         dir = Vector3.ClampMagnitude(dir, tpLength);
 
         pm.TP(transform.position + dir);
+        pv.RPC("OnSkill", RpcTarget.All, dir);
+    }
+
+    [PunRPC]
+    private void OnSkill(Vector3 dir)
+    {
+        transform.forward = dir;
+        navAgent.ResetPath();
     }
 
 }

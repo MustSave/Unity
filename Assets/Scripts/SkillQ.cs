@@ -15,6 +15,8 @@ public class SkillQ : Skill
     Transform tr;
     Animator anim;
     Camera camera;
+    public LayerMask rayLayer;
+    private Status status;
 
 
     private void Awake() {
@@ -23,10 +25,12 @@ public class SkillQ : Skill
         navAgent = GetComponent<NavMeshAgent>();
         tr = GetComponent<Transform>();
         anim = GetComponent<Animator>();
+        status = GetComponent<Status>();
 
         if (pv.IsMine)
         {
             camera = Camera.main;
+            this.useSmartKey = PlayerSettings.instance.useSmartKey;
         }
 
         coolTime = 4;
@@ -41,7 +45,7 @@ public class SkillQ : Skill
                     if (useSmartKey)
                     {
                         RaycastHit hit;
-                        Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit);
+                        Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit, float.MaxValue, rayLayer);
 
                         UseSkill();
                         pv.RPC("ThrowQ", RpcTarget.All, hit.point);
@@ -61,7 +65,7 @@ public class SkillQ : Skill
         while(true)
         {
             RaycastHit hit;
-            Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit);
+            Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit, float.MaxValue, rayLayer);
 
             Vector3 dir = Vector3.ProjectOnPlane(hit.point - tr.position, tr.up);
             qIndicator.transform.forward = dir;
@@ -87,6 +91,7 @@ public class SkillQ : Skill
     private void ThrowQ(Vector3 point)
     {
         pm.canMove = false;
+        pm.canRotate = false;
         pm.prevState = navAgent.isStopped;
         navAgent.isStopped = true;
 
@@ -96,10 +101,17 @@ public class SkillQ : Skill
 
         //anim.SetBool("Move", false);
         anim.SetTrigger("Q");
+        status.Hp -= 50;
     }
 
     public void ThrowQ_Event()
     {
-        Instantiate(knife, tr.position + tr.up * 1.5f, Quaternion.LookRotation(tr.forward, tr.up));
+        if (pv.IsMine)
+        {
+            GameObject go = PhotonNetwork.Instantiate("knife", tr.position + tr.up * 1.5f, Quaternion.LookRotation(tr.forward, tr.up));
+            go.layer = gameObject.layer;
+            go.transform.GetChild(0).gameObject.layer = gameObject.layer;
+            go.GetComponent<Knife>().status = this.status;
+        }
     }
 }

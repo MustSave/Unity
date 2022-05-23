@@ -48,6 +48,10 @@ MonoBehaviour:
   - ThrowQ
   - RPC_ThrowQ
   - UseGhost
+  - SetName
+  - GetDamage
+  - OnSkill
+  - RPCSetHp
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

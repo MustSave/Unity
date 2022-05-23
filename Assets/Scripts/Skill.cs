@@ -1,14 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Skill : MonoBehaviour
 {
     public float coolTime;
     protected float remainTime = 0;
 
+    protected TMP_Text remainText;
+    protected Image fillImage;
+
+    public SkillKey skillKey;
     public virtual void CheckInput()
     {
+    }
+
+    public void SetUI()
+    {
+        GameObject go = UIManger.instance.skillList[(int)skillKey];
+        remainText = go.transform.GetChild(1).GetComponent<TMP_Text>();
+        fillImage = go.transform.GetChild(0).GetComponent<Image>();
+
+        Init_UI();
+    }
+
+    protected void Init_UI()
+    {
+        fillImage.type = Image.Type.Filled;
+        fillImage.fillMethod = Image.FillMethod.Radial360;
+        fillImage.fillOrigin = (int)Image.Origin360.Top;
+        fillImage.fillClockwise = false;
+        fillImage.fillAmount = 0;
+    }
+
+    protected void Set_Fill()
+    {
+        fillImage.fillAmount = remainTime / coolTime;
+
+        string txt = remainTime < 10 ? remainTime.ToString("0.0") : remainTime.ToString("0");
+        remainText.text = txt;
+    }
+
+    protected void End_CoolTime()
+    {
+        Set_Fill();
+        remainText.gameObject.SetActive(false);
     }
 
     public bool CanUseSkill()
@@ -23,6 +61,7 @@ public class Skill : MonoBehaviour
     public void UseSkill()
     {
         remainTime = coolTime;
+        remainText.gameObject.SetActive(true);
         StartCoroutine(CalcRemainTime());
     }
 
@@ -32,7 +71,9 @@ public class Skill : MonoBehaviour
         {
             yield return null;
             remainTime -= Time.deltaTime;
+            Set_Fill();
         }
         remainTime = 0;
+        End_CoolTime();
     }
 }

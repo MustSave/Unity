@@ -8,6 +8,7 @@ public class Knife : MonoBehaviour
     Transform mesh;
     Rigidbody rb;
     Collider col;
+    public Status status;
     public float rotSpeed = 30;
     public float moveSpeed = 5;
     public float distance = 1;
@@ -34,5 +35,23 @@ public class Knife : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
+    }
+
+    float minDamage = 80;
+    float damagePercent = 0.2f;
+    bool damaged;
+    public float GiveDamage(float hp)
+    {
+        if (damaged) return 0;
+
+        damaged = true;
+
+        float damage = hp * damagePercent;
+        if (damage < minDamage)
+            damage = minDamage;
+
+        if (status != null)
+            status.SetHp(status.Hp + 50);
+        return damage;
     }
 }

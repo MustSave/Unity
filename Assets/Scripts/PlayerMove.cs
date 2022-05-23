@@ -25,6 +25,8 @@ public class PlayerMove : MonoBehaviour
 
     public bool useSmartKey;
     public bool prevState;
+    public bool canRotate = true;
+    public bool canSkill = true;
 
     public Skill Q,D,F;
 
@@ -33,6 +35,12 @@ public class PlayerMove : MonoBehaviour
         if (pv.IsMine)
         {
             camera = Camera.main;
+            this.useSmartKey = PlayerSettings.instance.useSmartKey;
+            gameObject.layer = LayerMask.NameToLayer("LocalPlayer");
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("RemotePlayer");
         }
         anim = GetComponentInChildren<Animator>();
         tr = GetComponent<Transform>();
@@ -40,6 +48,18 @@ public class PlayerMove : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
 
         navAgent.speed = moveSpeed;
+        canMove = true;
+        canRotate = true;
+    }
+
+    void Start()
+    {
+        if (pv.IsMine)
+        {
+            Q.SetUI();
+            D.SetUI();
+            F.SetUI();
+        }
     }
 
     void Update()
@@ -61,45 +81,72 @@ public class PlayerMove : MonoBehaviour
                 pv.RPC("Stop", RpcTarget.All);
             }
 
-            Q.CheckInput();
-            D.CheckInput();
-            F.CheckInput();
+            if (canSkill)
+            {
+                Q.CheckInput();
+                D.CheckInput();
+                F.CheckInput();
+            }
 
             #if test
             navAgent.speed = moveSpeed;
             #endif
         }
-
-        CheckDeistination();
-
     }
 
-    private void CheckDeistination()
-    {
-        if (navAgent.remainingDistance < 0.01)
-        {
-            navAgent.isStopped = true;
-            //pv.RPC("RPC_TP", RpcTarget.All, destination);
-            anim.SetBool("Move", false);
-        }
-    }
-
+    Quaternion targetRot;
+    public float rotSpeed;
     [PunRPC]
     private void MoveTo(Vector3 dest)
     {
+        print(canMove);
         if(canMove)
         {
             navAgent.isStopped = false;
             float angle = Vector3.SignedAngle(tr.forward, dest - tr.position, Vector3.up);
             if (Mathf.Abs(angle) > 90)
             {
-                tr.eulerAngles += tr.up * angle;
+                // tr.eulerAngles += tr.up * angle;
+                targetRot = Quaternion.Euler(tr.eulerAngles + tr.up * angle);
+                StopCoroutine("SmoothRotate");
+                StartCoroutine("SmoothRotate");
             }
             anim.SetBool("Move", true);
         }
 
         navAgent.SetDestination(dest);
         destination = dest;
+
+        if (!checking)
+        {
+            StartCoroutine(CheckReachedDestination());
+        }
+    }
+    bool checking;
+    IEnumerator CheckReachedDestination()
+    {
+        checking = true;
+        yield return null;
+        while(navAgent.remainingDistance > 0.1f)
+        {
+            yield return null;
+        }
+        anim.SetBool("Move", false);
+        checking = false;
+    }
+
+    IEnumerator SmoothRotate()
+    {
+        print("Start Rotate");
+        while (Quaternion.Angle(tr.rotation, targetRot) > 0.1f)
+        {
+            while (!canRotate)
+                yield return null;
+            tr.rotation = Quaternion.RotateTowards(tr.rotation, targetRot, Time.deltaTime * rotSpeed);
+            yield return null;
+        }
+        tr.rotation = targetRot;
+        print("Stop Rotate");
     }
 
     public void TP(Vector3 position)
@@ -125,10 +172,6 @@ public class PlayerMove : MonoBehaviour
         navAgent.isStopped = prevState;
         navAgent.updateRotation = true;
         canMove = true;
-    }
-
-    private void OnTriggerEnter(Collider other) 
-    {
-        
+        canRotate = true;
     }
 }
