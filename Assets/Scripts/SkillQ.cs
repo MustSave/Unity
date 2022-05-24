@@ -108,7 +108,7 @@ public class SkillQ : Skill
     {
         if (pv.IsMine)
         {
-            GameObject go = PhotonNetwork.Instantiate("knife", tr.position + tr.up * 1.5f, Quaternion.LookRotation(tr.forward, tr.up));
+            GameObject go = PhotonNetwork.Instantiate("knife", tr.position + tr.up * 0.5f, Quaternion.LookRotation(tr.forward, tr.up));
             go.layer = gameObject.layer;
             go.transform.GetChild(0).gameObject.layer = gameObject.layer;
             go.GetComponent<Knife>().status = this.status;

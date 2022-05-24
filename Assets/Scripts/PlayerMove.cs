@@ -66,11 +66,12 @@ public class PlayerMove : MonoBehaviour
     {
         if (pv.IsMine)
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButton(1) || Input.GetMouseButtonDown(1))
             {
                 RaycastHit rayHit;
                 if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out rayHit, float.MaxValue, movableLayer))
                 {
+                    print("DBG");
                     pv.RPC("MoveTo", RpcTarget.All, rayHit.point);
                 }
             }

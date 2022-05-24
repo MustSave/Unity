@@ -22,6 +22,10 @@ public class SkillF : Skill
             camera = Camera.main;
     }
 
+    private void Update() {
+        Debug.DrawRay(transform.position, transform.forward * tpLength, Color.red);
+    }
+
     public override void CheckInput()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -44,13 +48,15 @@ public class SkillF : Skill
         Vector3 dir = Vector3.ProjectOnPlane(hit.point - transform.position, transform.up);
         dir = Vector3.ClampMagnitude(dir, tpLength);
 
-        pm.TP(transform.position + dir);
+
+        //pm.TP(transform.position + dir);
         pv.RPC("OnSkill", RpcTarget.All, dir);
     }
 
     [PunRPC]
     private void OnSkill(Vector3 dir)
     {
+        navAgent.Warp(transform.position + dir);
         transform.forward = dir;
         navAgent.ResetPath();
     }
