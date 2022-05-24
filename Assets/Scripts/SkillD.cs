@@ -8,6 +8,7 @@ public class SkillD : Skill
 {
     PhotonView pv;
     NavMeshAgent navAgent;
+    public SkinnedMeshAfterImage smai;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +36,11 @@ public class SkillD : Skill
     }
     IEnumerator Ghost()
     {
+        smai.enabled = true;
         float prevSpeed = navAgent.speed;
         navAgent.speed *= 1.3f;
         yield return new WaitForSecondsRealtime(10);
         navAgent.speed = prevSpeed;
+        smai.enabled = false;
     }
 }

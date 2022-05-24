@@ -9,7 +9,6 @@ public class PanelTest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public Vector3 movDir;
     public void OnPointerEnter(PointerEventData eventData)
     {
-        print("Enter to " + gameObject.name);
         if (camManager)
         {
             camManager.movVec += movDir;
@@ -18,7 +17,6 @@ public class PanelTest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        print("Exit from " + gameObject.name);
         if (camManager)
         {
             camManager.movVec -= movDir;
