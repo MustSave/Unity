@@ -9,8 +9,12 @@ public class Skill : MonoBehaviour
     public float coolTime;
     protected float remainTime = 0;
 
+    protected Image baseImage;
     protected TMP_Text remainText;
     protected Image fillImage;
+
+    protected Color originColor;
+    protected Color inactiveColor;
 
     public SkillKey skillKey;
     public virtual void CheckInput()
@@ -20,6 +24,7 @@ public class Skill : MonoBehaviour
     public void SetUI()
     {
         GameObject go = UIManger.instance.skillList[(int)skillKey];
+        baseImage = go.GetComponent<Image>();
         remainText = go.transform.GetChild(1).GetComponent<TMP_Text>();
         fillImage = go.transform.GetChild(0).GetComponent<Image>();
 
@@ -28,6 +33,9 @@ public class Skill : MonoBehaviour
 
     protected void Init_UI()
     {
+        ColorUtility.TryParseHtmlString("#4F4F4F", out inactiveColor);
+        originColor = baseImage.color;
+
         fillImage.type = Image.Type.Filled;
         fillImage.fillMethod = Image.FillMethod.Radial360;
         fillImage.fillOrigin = (int)Image.Origin360.Top;
@@ -47,6 +55,7 @@ public class Skill : MonoBehaviour
     {
         Set_Fill();
         remainText.gameObject.SetActive(false);
+        baseImage.color = originColor;
     }
 
     public bool CanUseSkill()
@@ -62,6 +71,7 @@ public class Skill : MonoBehaviour
     {
         remainTime = coolTime;
         remainText.gameObject.SetActive(true);
+        baseImage.color = inactiveColor;
         StartCoroutine(CalcRemainTime());
     }
 
