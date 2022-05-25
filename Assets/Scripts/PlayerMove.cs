@@ -92,7 +92,7 @@ public class PlayerMove : MonoBehaviour
                 pv.RPC("Stop", RpcTarget.All);
             }
 
-            if (canSkill)
+            if (canSkill && !(ChatManager.instance as ChatManagerInGame).focusing)
             {
                 Q.CheckInput();
                 D.CheckInput();

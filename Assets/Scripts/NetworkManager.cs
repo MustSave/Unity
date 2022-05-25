@@ -30,8 +30,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject roomPanel;
     public TMP_Text playerListText;
     public TMP_Text RoomInfoText;
-    public TMP_Text[] chatText;
-    public TMP_InputField chatInput;
 
     [Header("")]
     private List<RoomInfo> myRoomList = new List<RoomInfo>();
@@ -42,9 +40,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject startButton;
 
 
-#if !UNITY_EDITOR
-    void Awake() => Screen.SetResolution(960, 540, false);
-#endif
+// #if !UNITY_EDITOR
+//     void Awake() => Screen.SetResolution(960, 540, false);
+// #endif
 
 #region RoomList
     public void MyListClick(int num)
@@ -135,11 +133,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         roomPanel.SetActive(true);
         lobbyPanel.SetActive(false);
         RoomRenewal();
-        chatInput.text = "";
-        for (int i = 0; i < chatText.Length; i++)
-        {
-            chatText[i].text = "";
-        }
+        ChatManager.instance.Init();
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -170,49 +164,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         RoomRenewal();
-        ChatRPC("<color=yellow>" + newPlayer.NickName + "Entered</color>");
+        ChatManager.instance.ChatRPC("<color=yellow>" + newPlayer.NickName + "Entered</color>");
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         RoomRenewal();
-        ChatRPC("<color=yellow>" + otherPlayer.NickName + "Leaved</color>");
+        ChatManager.instance.ChatRPC("<color=yellow>" + otherPlayer.NickName + "Leaved</color>");
     }
 
-
-#endregion
-
-#region Chat
-    public void Send()
-    {
-        if (chatInput.text != "");
-        {
-            PV.RPC("ChatRPC", RpcTarget.All, PhotonNetwork.NickName + " : " + chatInput.text);
-            chatInput.text = "";
-        }
-    }
-
-    [PunRPC]
-    void ChatRPC(string msg)
-    {
-        bool isInput = false;
-        for (int i = 0; i < chatText.Length; i++)
-        {
-            if (chatText[i].text == "")
-            {
-                isInput = true;
-                chatText[i].text = msg;
-                break;
-            }
-        }
-
-        if (!isInput)
-        {
-            for (int i = 1; i < chatText.Length; i++)
-                chatText[i-1].text = chatText[i].text;
-            chatText[chatText.Length - 1].text = msg;
-        }
-    }
 #endregion
 
     public void GameStart()

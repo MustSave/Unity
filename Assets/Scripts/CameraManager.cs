@@ -74,6 +74,7 @@ public class CameraManager : MonoBehaviour
             cam.transform.position += movVec.normalized * Time.deltaTime * camSpeed;
             yield return null;
         }
+
     }
 
     private void CamToCharacter()
