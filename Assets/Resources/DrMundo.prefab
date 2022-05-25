@@ -5862,6 +5862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knife: {fileID: 1695183362907395577, guid: 03f26788d9e3c034e84f6ba6a1a68e2c, type: 3}
+  clickParticle: {fileID: 1656239011187358748, guid: 78c2dbabe9484544284d5c55fcde71f2, type: 3}
   pv: {fileID: 49709193}
   qInticator: {fileID: 2102891111}
   movableLayer:

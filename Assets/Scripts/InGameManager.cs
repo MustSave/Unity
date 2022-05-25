@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 
 public enum Team {Red, Blue};
+[RequireComponent(typeof(PhotonView))]
 public class InGameManager : MonoBehaviour
 {
     public static InGameManager instance;
@@ -13,6 +14,7 @@ public class InGameManager : MonoBehaviour
 
     public GameObject WinnerPanel;
     public GameObject LoserPanel;
+    public int loadCompletePlayers;
 
     private void Start() 
     {
@@ -20,6 +22,23 @@ public class InGameManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Confined;
 
+        if (PhotonNetwork.IsMasterClient)
+        {
+            StartCoroutine(ReadyToStart());
+        }
+
+        GetComponent<PhotonView>().RPC("LoadComplete", RpcTarget.MasterClient);   
+    }
+
+    [PunRPC]
+    private void LoadComplete()
+    {
+        loadCompletePlayers++;
+    }
+
+    [PunRPC]
+    private void Spawn()
+    {
         if (PlayerSettings.instance.team == Team.Red)
         {
             PhotonNetwork.Instantiate("DrMundo", spawnPlace[(int)Team.Red].position, Quaternion.identity);
@@ -30,10 +49,19 @@ public class InGameManager : MonoBehaviour
         }
     }
 
+    IEnumerator ReadyToStart()
+    {
+        while (PhotonNetwork.CountOfPlayersInRooms != loadCompletePlayers)
+        {
+            yield return null;
+        }
+
+        GetComponent<PhotonView>().RPC("Spawn", RpcTarget.All);
+    }
+
     public void GameResult(bool win)
     {
         StartCoroutine(ShowWinner(win));
-        
     }
 
     IEnumerator ShowWinner(bool win)

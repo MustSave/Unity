@@ -15,7 +15,7 @@ public class CameraManager : MonoBehaviour
 
     public Vector3 movVec;
 
-    private void Awake() 
+    private void Start() 
     {
         pv = GetComponent<PhotonView>();
 
@@ -49,34 +49,23 @@ public class CameraManager : MonoBehaviour
             float tmp = cam.fieldOfView + scroll;
             cam.fieldOfView = Mathf.Clamp(tmp, minFov, maxFov);
 
-            // if (cam.fieldOfView == minFov || cam.fieldOfView == maxFov)
-            // {
-            //     yield return null;
-            //     continue;
-            // }
-
-            // if (scroll < 0 && Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit rayHit))
-            // {
-            //     Vector3 dir = Vector3.ProjectOnPlane(rayHit.point - cam.transform.position, cam.transform.forward);
-            //     cam.transform.position += dir.normalized * Time.deltaTime * camMoveSpeed;
-            // }
-
             yield return null;
         }
     }
 
     IEnumerator ScreenMove()
     {
+        for (float f = 0; f < 0.5f; f+=Time.deltaTime)
+        {
+            CamToCharacter();
+            yield return null;
+        }
+        //CamToCharacter();
         while(true)
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                Vector3 dir = Vector3.ProjectOnPlane(cam.transform.forward, Vector3.up);
-
-                Vector3 camPosition = transform.position - dir;
-                camPosition.y = cam.transform.position.y;
-
-                cam.transform.position = camPosition;
+                CamToCharacter();
 
                 yield return null;
                 continue;
@@ -87,13 +76,14 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    // float DistanceFromPlane(Vector3 planeOffset, Vector3 planeNormal, Vector3 point)
-    // {
-    //      return Vector3.Dot(planeOffset - point, planeNormal);
-    // }
-
-    Vector3 ClosestPointOnPlane(Vector3 planeOffset, Vector3 planeNormal, Vector3 point)
+    private void CamToCharacter()
     {
-        return point + Vector3.Dot(planeOffset - point, planeNormal) * planeNormal;
+        float dist = Vector3.Distance(cam.transform.position, transform.position);
+        Vector3 dir = Vector3.ProjectOnPlane(cam.transform.forward * dist, Vector3.up);
+
+        Vector3 camPosition = transform.position - dir;
+        camPosition.y = cam.transform.position.y;
+
+        cam.transform.position = camPosition;
     }
 }

@@ -9,6 +9,7 @@ using Photon.Realtime;
 public class PlayerMove : MonoBehaviour
 {
     public GameObject knife;
+    public GameObject clickParticle;
     public PhotonView pv;
     public GameObject qInticator;
     public LayerMask movableLayer;
@@ -66,12 +67,21 @@ public class PlayerMove : MonoBehaviour
     {
         if (pv.IsMine)
         {
-            if (Input.GetMouseButton(1) || Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 RaycastHit rayHit;
                 if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out rayHit, float.MaxValue, movableLayer))
                 {
-                    print("DBG");
+                    GameObject go = Instantiate(clickParticle, rayHit.point, Quaternion.identity);
+                    go.transform.forward = rayHit.normal;
+                    pv.RPC("MoveTo", RpcTarget.All, rayHit.point);
+                }
+            }
+            else if (Input.GetMouseButton(1))
+            {
+                RaycastHit rayHit;
+                if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out rayHit, float.MaxValue, movableLayer))
+                {
                     pv.RPC("MoveTo", RpcTarget.All, rayHit.point);
                 }
             }
