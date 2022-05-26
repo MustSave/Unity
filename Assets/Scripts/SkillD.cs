@@ -36,6 +36,7 @@ public class SkillD : Skill
     }
     IEnumerator Ghost()
     {
+        if (effectSound)audioSource.PlayOneShot(effectSound);
         smai.enabled = true;
         float prevSpeed = navAgent.speed;
         navAgent.speed *= 1.3f;

@@ -14,6 +14,7 @@ public class InGameManager : MonoBehaviour
 
     public GameObject WinnerPanel;
     public GameObject LoserPanel;
+    public GameObject btn;
     public int loadCompletePlayers;
 
     private void Start() 
@@ -72,5 +73,12 @@ public class InGameManager : MonoBehaviour
             WinnerPanel.SetActive(true);
         else
             LoserPanel.SetActive(true);
+        btn.SetActive(true);
+
+    }
+
+    public void BackToLobby()
+    {
+        PhotonNetwork.LoadLevel(0);
     }
 }

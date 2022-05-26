@@ -2496,6 +2496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c345934f47eb9d41b33642e8cff8447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nmng: {fileID: 609553031}
   teamButtonImg: {fileID: 1713162404}
   team: 0
 --- !u!4 &443589418
@@ -6126,9 +6127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed4ebdee8eb87b409a56bd64c2a2099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pv: {fileID: 1187449792}
   inputField: {fileID: 611300952}
-  btn: {fileID: 0}
   chatArea: {fileID: 1528176607}
   isFocused: 0
 --- !u!4 &1187449791

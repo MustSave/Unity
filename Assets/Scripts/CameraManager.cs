@@ -23,11 +23,11 @@ public class CameraManager : MonoBehaviour
         {
             cam = Camera.main;
 
-            var s = GameObject.FindObjectsOfType<PanelTest>();
-            foreach (var a in s)
-            {
-                a.camManager = this;
-            }
+            // var s = GameObject.FindObjectsOfType<PanelTest>();
+            // foreach (var a in s)
+            // {
+            //     a.camManager = this;
+            // }
 
             StartCoroutine(Zoom());
             StartCoroutine(ScreenMove());
@@ -71,6 +71,7 @@ public class CameraManager : MonoBehaviour
                 continue;
             }
 
+            a();
             cam.transform.position += movVec.normalized * Time.deltaTime * camSpeed;
             yield return null;
         }
@@ -86,5 +87,24 @@ public class CameraManager : MonoBehaviour
         camPosition.y = cam.transform.position.y;
 
         cam.transform.position = camPosition;
+    }
+
+    public float boardThickness = 25;
+    void a()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        if (mousePosition.y >= Screen.height - boardThickness)
+            movVec.z = -1;
+        else if (mousePosition.y <= boardThickness)
+            movVec.z = 1;
+        else
+            movVec.z = 0;
+
+        if (mousePosition.x >= Screen.width - boardThickness)
+            movVec.x = -1;
+        else if (mousePosition.x <= boardThickness)
+            movVec.x = 1;
+        else
+            movVec.x = 0;
     }
 }

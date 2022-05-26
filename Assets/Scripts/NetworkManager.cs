@@ -101,6 +101,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         lobbyPanel.SetActive(true);
         roomPanel.SetActive(false);
+        offlinePanel.SetActive(false);
 
         PhotonNetwork.LocalPlayer.NickName = nickNameInput.text;
         welcomeText.text = "Welcome " + PhotonNetwork.LocalPlayer.NickName;
@@ -132,6 +133,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         roomPanel.SetActive(true);
         lobbyPanel.SetActive(false);
+        offlinePanel.SetActive(false);
         RoomRenewal();
         ChatManager.instance.Init();
 

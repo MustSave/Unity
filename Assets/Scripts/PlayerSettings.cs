@@ -5,14 +5,23 @@ using UnityEngine.UI;
 
 public class PlayerSettings : MonoBehaviour
 {
+    public NetworkManager nmng;
     public static PlayerSettings instance;
     public Image teamButtonImg;
     public bool useSmartKey {get; private set;}
     public Team team;
     private void Awake() 
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            nmng.LeaveRoom();
+            Destroy(gameObject);
+        }
     }
 
     public void ToggleSmartKey(Toggle t)
