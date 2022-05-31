@@ -15,7 +15,7 @@ public class CanvasRotator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         tr.rotation = camTr.rotation;
     }

@@ -20,6 +20,7 @@ public class InGameManager : MonoBehaviour
     private void Start() 
     {
         instance = this;
+        // PhotonNetwork.AutomaticallySyncScene = false;
 
         Cursor.lockState = CursorLockMode.Confined;
 
@@ -38,7 +39,7 @@ public class InGameManager : MonoBehaviour
     }
 
     [PunRPC]
-    private void Spawn()
+    private void Spawn(int team)
     {
         if (PlayerSettings.instance.team == Team.Red)
         {
@@ -57,7 +58,8 @@ public class InGameManager : MonoBehaviour
             yield return null;
         }
 
-        GetComponent<PhotonView>().RPC("Spawn", RpcTarget.All);
+        
+        GetComponent<PhotonView>().RPC("Spawn", RpcTarget.All, Random.Range(0, 2));
     }
 
     public void GameResult(bool win)
@@ -79,6 +81,26 @@ public class InGameManager : MonoBehaviour
 
     public void BackToLobby()
     {
+        StartCoroutine(BackToLobbyI());
+    }
+
+    IEnumerator BackToLobbyI()
+    {
+        PhotonNetwork.LeaveRoom();
+
+        while (PhotonNetwork.NetworkClientState == Photon.Realtime.ClientState.Leaving)
+        {
+            print("Leaving");
+            yield return null;
+        }
+        Destroy(PlayerSettings.instance.gameObject);
         PhotonNetwork.LoadLevel(0);
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            btn.SetActive(true);
+        }
     }
 }

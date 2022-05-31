@@ -17,8 +17,6 @@ public class Skill : MonoBehaviour
     protected Color inactiveColor;
 
     public SkillKey skillKey;
-    public AudioClip effectSound;
-    public AudioSource audioSource;
     public virtual void CheckInput()
     {
     }

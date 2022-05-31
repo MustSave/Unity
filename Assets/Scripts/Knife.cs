@@ -8,20 +8,17 @@ public class Knife : MonoBehaviour
     Transform mesh;
     Rigidbody rb;
     Collider col;
+    [HideInInspector]
     public Status status;
     public float rotSpeed = 30;
     public float moveSpeed = 5;
     public float distance = 1;
-    public AudioClip startClip;
-    public AudioClip endClip;
-    private AudioSource audioSource;
 
     private void Awake() 
     {
         tr = GetComponent<Transform>();
         mesh = tr.GetChild(0).GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
         col = GetComponentInChildren<Collider>();
 
         rb.velocity = tr.forward * moveSpeed;
@@ -33,9 +30,11 @@ public class Knife : MonoBehaviour
 
     IEnumerator SelfDestroy()
     {
-        audioSource.PlayOneShot(startClip);
+        // audioSource.PlayOneShot(startClip);
+        SoundManager.instance.PlayOneShot("QStart");
         yield return new WaitForSecondsRealtime(distance/moveSpeed);
-        if (damaged == false) audioSource.PlayOneShot(endClip);
+        if (damaged == false) //audioSource.PlayOneShot(endClip);
+            SoundManager.instance.PlayOneShot("QEnd");
         rb.velocity = rb.angularVelocity = Vector3.zero;
         col.enabled = false;
 

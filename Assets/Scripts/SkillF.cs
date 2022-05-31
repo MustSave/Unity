@@ -56,7 +56,8 @@ public class SkillF : Skill
     [PunRPC]
     private void OnSkill(Vector3 dir)
     {
-        if (effectSound)audioSource.PlayOneShot(effectSound);
+        // if (effectSound)audioSource.PlayOneShot(effectSound);
+        SoundManager.instance.PlayOneShot("Flash");
         navAgent.Warp(transform.position + dir);
         transform.forward = dir;
         navAgent.ResetPath();

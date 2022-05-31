@@ -1,5 +1,3 @@
-#define PC
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,11 +36,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private int multiple;
 
     public GameObject startButton;
-
-
-// #if !UNITY_EDITOR
-//     void Awake() => Screen.SetResolution(960, 540, false);
-// #endif
 
 #region RoomList
     public void MyListClick(int num)
@@ -103,7 +96,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         roomPanel.SetActive(false);
         offlinePanel.SetActive(false);
 
-        PhotonNetwork.LocalPlayer.NickName = nickNameInput.text;
+        if (PhotonNetwork.LocalPlayer.NickName.Equals("") == true)
+        {
+            PhotonNetwork.LocalPlayer.NickName = nickNameInput.text;
+        }
+
         welcomeText.text = "Welcome " + PhotonNetwork.LocalPlayer.NickName;
 
         myRoomList.Clear();
@@ -140,6 +137,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             startButton.SetActive(true);
+            PlayerSettings.instance.team = (Team)Random.Range(0, 2);
+            PlayerSettings.instance.SetTeamColor();
+
+        }
+        else
+        {
+            startButton.SetActive(false);
         }
     }
 
@@ -167,12 +171,28 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         RoomRenewal();
         ChatManager.instance.ChatRPC("<color=yellow>" + newPlayer.NickName + "Entered</color>");
+        PV.RPC("SetTeam", newPlayer, PlayerSettings.instance.team == Team.Red ? 1 : 0);
+    }
+
+    [PunRPC]
+    private void SetTeam(int team)
+    {
+        PlayerSettings.instance.team = (Team)team;
+        PlayerSettings.instance.SetTeamColor();
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         RoomRenewal();
         ChatManager.instance.ChatRPC("<color=yellow>" + otherPlayer.NickName + "Leaved</color>");
+    }
+
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        if (PhotonNetwork.LocalPlayer.Equals(newMasterClient))
+        {
+            startButton.SetActive(true);
+        }
     }
 
 #endregion
@@ -184,13 +204,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             
-            PV.RPC("ChangeScene", RpcTarget.All);
+            // PV.RPC("ChangeScene", RpcTarget.All);
+            PhotonNetwork.LoadLevel(1);
         }
     }
 
-    [PunRPC]
-    private void ChangeScene()
-    {
-        PhotonNetwork.LoadLevel(1);
+    private void Start() {
+        PhotonNetwork.AutomaticallySyncScene = true;
+        // Screen.fullScreen = true;
     }
 }

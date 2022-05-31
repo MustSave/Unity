@@ -10,6 +10,7 @@ public class PlayerSettings : MonoBehaviour
     public Image teamButtonImg;
     public bool useSmartKey {get; private set;}
     public Team team;
+    public bool symmetryCamera;
     private void Awake() 
     {
         if (instance == null)
@@ -19,8 +20,12 @@ public class PlayerSettings : MonoBehaviour
         }
         else
         {
-            nmng.LeaveRoom();
-            Destroy(gameObject);
+            print("AA");
+            // PlayerSettings.instance.InitSettingValues();
+            // Destroy(gameObject);
+            Destroy(PlayerSettings.instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
@@ -29,9 +34,28 @@ public class PlayerSettings : MonoBehaviour
         useSmartKey = t.isOn;
     }
 
-    public void ToggleTeamColor()
+    public void ToggleSymmetryCamera(Toggle t)
     {
-        team = team == Team.Red ? Team.Blue : Team.Red;
+        symmetryCamera = t.isOn;
+    }
+
+    public void SetTeamColor()
+    {
         teamButtonImg.color = team == Team.Red ? Color.red : Color.blue;
+    }
+
+    public bool IsSymmetryCamera
+    {
+        get 
+        {
+            return symmetryCamera && team == Team.Red;
+        }
+    }
+
+    private void InitSettingValues()
+    {
+        team = Team.Red;
+        symmetryCamera = false;
+        useSmartKey = false;
     }
 }

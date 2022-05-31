@@ -48,8 +48,6 @@ public class Status : MonoBehaviour
     private Animator anim;
     private NavMeshAgent navAgent;
     public GameObject canvas;
-    public AudioSource audioSource;
-    public AudioClip onHitClip;
 
     private void Awake() 
     {
@@ -141,7 +139,8 @@ public class Status : MonoBehaviour
     {
         GameObject other = PhotonNetwork.GetPhotonView(viewID).gameObject;
         Hp -= other.GetComponent<Knife>().GiveDamage(Hp);
-        audioSource.PlayOneShot(onHitClip);
+        // audioSource.PlayOneShot(onHitClip);
+        SoundManager.instance.PlayOneShot("QHit");
         if (Hp <= 0)
         {
             OnDeath();
