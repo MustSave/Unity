@@ -139,8 +139,7 @@ public class Status : MonoBehaviour
     {
         GameObject other = PhotonNetwork.GetPhotonView(viewID).gameObject;
         Hp -= other.GetComponent<Knife>().GiveDamage(Hp);
-        // audioSource.PlayOneShot(onHitClip);
-        SoundManager.instance.PlayOneShot("QHit");
+
         if (Hp <= 0)
         {
             OnDeath();

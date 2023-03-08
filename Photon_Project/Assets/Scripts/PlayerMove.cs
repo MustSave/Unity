@@ -30,7 +30,6 @@ public class PlayerMove : MonoBehaviour
     public bool canSkill = true;
 
     public Skill Q,D,F;
-    private float movingSoundPlayedTime = -20f;
 
     void Awake()
     {
@@ -61,8 +60,6 @@ public class PlayerMove : MonoBehaviour
             Q.SetUI();
             D.SetUI();
             F.SetUI();
-
-            CameraManager.instance.SetCamera(tr);
         }
     }
 
@@ -78,13 +75,6 @@ public class PlayerMove : MonoBehaviour
                     GameObject go = Instantiate(clickParticle, rayHit.point, Quaternion.identity);
                     go.transform.forward = rayHit.normal;
                     pv.RPC("MoveTo", RpcTarget.All, rayHit.point);
-
-                    if (Time.time - movingSoundPlayedTime > 20)
-                    {
-                        movingSoundPlayedTime = Time.time;
-                        
-                        SoundManager.instance.PlayOneShot(Random.Range(0, 2) == 0 ? "Move" : "Move2", 0.1f);
-                    }
                 }
             }
             else if (Input.GetMouseButton(1))
@@ -113,15 +103,6 @@ public class PlayerMove : MonoBehaviour
             navAgent.speed = moveSpeed;
             #endif
         }
-
-        // Vector3 lookRotation = navAgent.steeringTarget - tr.position;
-        // Quaternion targetRotation = Quaternion.LookRotation(lookRotation);
-        float angle = Vector3.SignedAngle(tr.forward, navAgent.steeringTarget - tr.position, Vector3.up);
-        if (Mathf.Abs(angle) > 90)
-        {
-            StopCoroutine("SmoothRotate");
-            StartCoroutine("SmoothRotate");
-        }
     }
 
     Quaternion targetRot;
@@ -133,12 +114,14 @@ public class PlayerMove : MonoBehaviour
         if(canMove)
         {
             navAgent.isStopped = false;
-            // float angle = Vector3.SignedAngle(tr.forward, dest - tr.position, Vector3.up);
-            // if (Mathf.Abs(angle) > 90)
-            // {
-            //     StopCoroutine("SmoothRotate");
-            //     StartCoroutine("SmoothRotate");
-            // }
+            float angle = Vector3.SignedAngle(tr.forward, dest - tr.position, Vector3.up);
+            if (Mathf.Abs(angle) > 90)
+            {
+                // tr.eulerAngles += tr.up * angle;
+                targetRot = Quaternion.Euler(tr.eulerAngles + tr.up * angle);
+                StopCoroutine("SmoothRotate");
+                StartCoroutine("SmoothRotate");
+            }
             anim.SetBool("Move", true);
         }
 
@@ -166,21 +149,14 @@ public class PlayerMove : MonoBehaviour
     IEnumerator SmoothRotate()
     {
         print("Start Rotate");
-        Vector3 lookRotation = navAgent.steeringTarget - tr.position;
-        Quaternion targetRotation = Quaternion.LookRotation(lookRotation);
-        
-        while (Quaternion.Angle(tr.rotation, targetRotation) > 0.1f)
+        while (Quaternion.Angle(tr.rotation, targetRot) > 0.1f)
         {
             while (!canRotate)
                 yield return null;
-            tr.rotation = Quaternion.RotateTowards(tr.rotation, targetRotation, Time.deltaTime * rotSpeed);
-            
+            tr.rotation = Quaternion.RotateTowards(tr.rotation, targetRot, Time.deltaTime * rotSpeed);
             yield return null;
-            
-            lookRotation = navAgent.steeringTarget - tr.position;
-            targetRotation = Quaternion.LookRotation(lookRotation);
         }
-        // tr.rotation = targetRot;
+        tr.rotation = targetRot;
         print("Stop Rotate");
     }
 

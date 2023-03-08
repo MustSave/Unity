@@ -5,43 +5,40 @@ using Photon.Pun;
 
 public class CameraManager : MonoBehaviour
 {
-    public static CameraManager instance;
-    Transform camTransform;
+    PhotonView pv;
+    Camera cam;
     public float scrollSpeed;
     public float camMoveSpeed = 1;
     public float camSpeed = 10;
-    private bool symmetry;
     [Range(30, 100f)] public float minFov;
     [Range(30, 100f)]public float maxFov;
 
     public Vector3 movVec;
-    private Vector3 camFwd;
 
-    private void Awake() {
-        instance = this;
-        camTransform = Camera.main.transform;
-        symmetry = PlayerSettings.instance.IsSymmetryCamera;
-
-        if (symmetry)
-             Camera.main.transform.eulerAngles = new Vector3(45, 0, 0);
-
-        camFwd = camTransform.forward;
-    }
-
-    Transform tr;
-    public void SetCamera(Transform tr)
+    private void Start() 
     {
-        this.tr = tr;
+        pv = GetComponent<PhotonView>();
 
-        StartCoroutine(Zoom());
-        StartCoroutine(ScreenMove());
+        if (pv.IsMine)
+        {
+            cam = Camera.main;
+
+            var s = GameObject.FindObjectsOfType<PanelTest>();
+            foreach (var a in s)
+            {
+                a.camManager = this;
+            }
+
+            StartCoroutine(Zoom());
+            StartCoroutine(ScreenMove());
+        }
     }
 
     IEnumerator Zoom() 
     {
         while (true)
         {
-            float scroll = Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+            float scroll = Input.GetAxis("Mouse ScrollWheel") * -scrollSpeed;
 
             if (scroll == 0)
             {
@@ -49,15 +46,8 @@ public class CameraManager : MonoBehaviour
                 continue;
             }
 
-            // float tmp = cam.fieldOfView + scroll;
-            // cam.fieldOfView = Mathf.Clamp(tmp, minFov, maxFov);
-            Vector3 position = camTransform.position + camFwd * scroll * Time.deltaTime;
-            if (position.y > maxFov || position.y < minFov)
-            {
-                yield return null;
-                continue;
-            }
-            camTransform.position = position;
+            float tmp = cam.fieldOfView + scroll;
+            cam.fieldOfView = Mathf.Clamp(tmp, minFov, maxFov);
 
             yield return null;
         }
@@ -70,7 +60,7 @@ public class CameraManager : MonoBehaviour
             CamToCharacter();
             yield return null;
         }
-
+        //CamToCharacter();
         while(true)
         {
             if (Input.GetKey(KeyCode.Space))
@@ -81,39 +71,20 @@ public class CameraManager : MonoBehaviour
                 continue;
             }
 
-            a();
-            camTransform.position += movVec.normalized * Time.deltaTime * camSpeed;
+            cam.transform.position += movVec.normalized * Time.deltaTime * camSpeed;
             yield return null;
         }
+
     }
 
     private void CamToCharacter()
     {
-        float dist = Vector3.Distance(camTransform.position, tr.position);
-        Vector3 dir = Vector3.ProjectOnPlane(camFwd * dist, Vector3.up);
+        float dist = Vector3.Distance(cam.transform.position, transform.position);
+        Vector3 dir = Vector3.ProjectOnPlane(cam.transform.forward * dist, Vector3.up);
 
-        Vector3 camPosition = tr.position - dir;
-        camPosition.y = camTransform.position.y;
+        Vector3 camPosition = transform.position - dir;
+        camPosition.y = cam.transform.position.y;
 
-        camTransform.position = camPosition;
-    }
-
-    public float boardThickness = 25;
-    void a()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        if (mousePosition.y >= Screen.height - boardThickness)
-            movVec.z = symmetry ? 1 : -1;
-        else if (mousePosition.y <= boardThickness)
-            movVec.z = symmetry ? -1 : 1;
-        else
-            movVec.z = 0;
-
-        if (mousePosition.x >= Screen.width - boardThickness)
-            movVec.x = symmetry ? 1 : -1;
-        else if (mousePosition.x <= boardThickness)
-            movVec.x = symmetry ? -1 : 1;
-        else
-            movVec.x = 0;
+        cam.transform.position = camPosition;
     }
 }

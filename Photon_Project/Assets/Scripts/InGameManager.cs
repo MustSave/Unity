@@ -14,13 +14,11 @@ public class InGameManager : MonoBehaviour
 
     public GameObject WinnerPanel;
     public GameObject LoserPanel;
-    public GameObject btn;
     public int loadCompletePlayers;
 
     private void Start() 
     {
         instance = this;
-        // PhotonNetwork.AutomaticallySyncScene = false;
 
         Cursor.lockState = CursorLockMode.Confined;
 
@@ -39,7 +37,7 @@ public class InGameManager : MonoBehaviour
     }
 
     [PunRPC]
-    private void Spawn(int team)
+    private void Spawn()
     {
         if (PlayerSettings.instance.team == Team.Red)
         {
@@ -58,8 +56,7 @@ public class InGameManager : MonoBehaviour
             yield return null;
         }
 
-        
-        GetComponent<PhotonView>().RPC("Spawn", RpcTarget.All, Random.Range(0, 2));
+        GetComponent<PhotonView>().RPC("Spawn", RpcTarget.All);
     }
 
     public void GameResult(bool win)
@@ -75,32 +72,5 @@ public class InGameManager : MonoBehaviour
             WinnerPanel.SetActive(true);
         else
             LoserPanel.SetActive(true);
-        btn.SetActive(true);
-
-    }
-
-    public void BackToLobby()
-    {
-        StartCoroutine(BackToLobbyI());
-    }
-
-    IEnumerator BackToLobbyI()
-    {
-        PhotonNetwork.LeaveRoom();
-
-        while (PhotonNetwork.NetworkClientState == Photon.Realtime.ClientState.Leaving)
-        {
-            print("Leaving");
-            yield return null;
-        }
-        Destroy(PlayerSettings.instance.gameObject);
-        PhotonNetwork.LoadLevel(0);
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            btn.SetActive(true);
-        }
     }
 }
