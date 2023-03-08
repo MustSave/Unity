@@ -1,0 +1,737 @@
+fileFormatVersion: 2
+guid: a068543a0cba9364688133e45ba2406b
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: JungleI__chunk_jungle_north_island_i_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: fda401e1a3a6dc641baa745f6a70c6cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LM_Grnd_Terrain_B_Shader
+    second: {fileID: 2100000, guid: 38f427454240bc1418741eb845bea0a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LM_lambert27034
+    second: {fileID: 2100000, guid: 524814f7e61413b489f792f99b91ced3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_north_platform_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 04fb27528df5bf54095f4e2778e70712, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_north_shop_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: aad5fe889c684f6459292fc4ce3f23e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_north_walls_b_Alpha_3dcUV_Atlas_color10
+    second: {fileID: 2100000, guid: 7b5a692c448b61441acfe09d190fad11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_north_walls_b_Alpha_3dcUV_Atlas_color11
+    second: {fileID: 2100000, guid: 5f2169fda898df24ebfea3ee28363e50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_north_walls_b_Alpha_3dcUV_Atlas_color5
+    second: {fileID: 2100000, guid: 2fa5a69c8e33c59429ae8ce7d2e9e60c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_north_walls_d_Alpha_3dcUV_Atlas_color2
+    second: {fileID: 2100000, guid: 452e4fa7d367d7143a0d5232eca8cd6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_north_walls_f_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 58e2c60c0bebfe845af6803cc018df8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_north_walls_f_Alpha_3dcUV_Atlas_color2
+    second: {fileID: 2100000, guid: eb070cc6073f3794892b3d484acd29e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_north_walls_g_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 6da8e850d4242e94baeef558ab04e03f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_south_walls_b_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 57ea80385891ecf4dbe58c2eaaa0f36e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_base_south_walls_c_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: ef6a72da74561e44ca0324a90cf2e7a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_east_island_b_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 85c3f3946b2e3f941a0c4c2975861066, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_east_island_c_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: c62daf06e952c4e4a9dd6810068cf0c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_east_island_d_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: edf0f25655845d64d9821efae9196b1a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_east_island_e_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 824be17012006554b93a5d29ba892199, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_east_island_f_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: f040e093a5d09af468aa97b08845fb75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_east_island_g_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: f4abd6f3a85f5714ba201a63863b8ee5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_east_island_h_Alpha_3dcUV_Atlas_color2
+    second: {fileID: 2100000, guid: 9f74b29e84ae7b34ea050c7e59865403, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_east_island_i_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 4b967fef1e32d504b9fc2bb325dec2ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_a_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: f2f15e449d7eff946b0166f5b87e9200, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_b_Alpha_3dcUV_Atlas_color2
+    second: {fileID: 2100000, guid: 50445ddf849ee4b4b978894e48f1ed6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_c_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 91a861fa3c5ae7946b6bd372ad4f4b0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_d_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 03934e5d7d12b214b85cd809b40577e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_e_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: e012551b7cdfb3348bf2d9296823e75b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_g_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 3df16bea69b350045b75b86693077cd7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_h_Alpha_3dcUV_Atlas_color2
+    second: {fileID: 2100000, guid: 5c36b5bdaad1cfd4685b9fea8547888b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_j_Alpha_3dcUV_Atlas_color2
+    second: {fileID: 2100000, guid: e705293fb39625c479e020bbf534ad6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_k_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 73a0a100fb9f6ef4cae65d3f6076ded5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_north_island_l_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 6cd80bf2956fe874e8482c2cb626803f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_south_island_a_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 4a6bec19e786d5f43838488293e35694, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_west_island_b_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: c8862e2c5bcf22a46a85b749b41ea174, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_west_island_c_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: ce798af245f45a349a68aeb8a40a5543, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_west_island_d_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 942bba40df1b30249bf78d8e172f1445, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_west_island_e_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 6624dc95f630a674a90abafb2bc54732, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_west_island_f_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: a881b683702ab7f44b1dcefa052c40b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_west_island_g_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: 87e23652938267744a927e28a1fb955f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_west_island_h_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: b0f02e52c3249464b813011841b5662f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _chunk_jungle_west_island_i_Alpha_3dcUV_Atlas_color
+    second: {fileID: 2100000, guid: a0dc0201adf855c4389d779685d149cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base_north_arches_periph2
+    second: {fileID: 2100000, guid: 9efa7d61b4a41f143a72e8407d621f4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base_north_arches_periph4
+    second: {fileID: 2100000, guid: 0b68dbb81af816242a199bea75631ff7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base_south_foliage
+    second: {fileID: 2100000, guid: 7b564fff0afb6dc468a36f2b9b55d975, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bk_distant_horizon_a4
+    second: {fileID: 2100000, guid: 4640bc014cf57ab418490d5d404d76ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bk_distant_horizon_a8
+    second: {fileID: 2100000, guid: 6bffcda52c9f6be459ada79ddcddec8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass_stair_card_01_lambert174131
+    second: {fileID: 2100000, guid: d2530f3e7ccaa0943bc411c00475852a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grnd_terrain_d2
+    second: {fileID: 2100000, guid: a50de008246b54244bd23d970c1e93c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grnd_terrain_w
+    second: {fileID: 2100000, guid: dc45869cf63efd045ad2d898abb931ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grnd_terrain_x
+    second: {fileID: 2100000, guid: f670c1603e104274dbfe09277fae5d50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grnd_terrain_y2
+    second: {fileID: 2100000, guid: 1ede89a40034887429e748c5c74f4041, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ground_V2
+    second: {fileID: 2100000, guid: 26e978a2c5f19f041a76003d6e888721, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hing_temp_lm_Grnd_Terrain_F_Shader2
+    second: {fileID: 2100000, guid: b0367ed5b320ba54db2f8204a8ef0094, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hing_temp_lm_Grnd_Terrain_H_Shader2
+    second: {fileID: 2100000, guid: 8a42e6bdbd102824bbace408fa583760, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hing_temp_lm_Grnd_Terrain_K_Shader2
+    second: {fileID: 2100000, guid: f29843187f80b044faec1205fd77fd1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hing_temp_lm_Grnd_Terrain_M_Shader1
+    second: {fileID: 2100000, guid: aac8595ed972dd24690b333649d134fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hing_temp_lm_Grnd_Terrain_O_Shader1
+    second: {fileID: 2100000, guid: 142aa8d9889d5d3488bd18686676d552, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jungle_east_island_a5
+    second: {fileID: 2100000, guid: 0c1ef256312b797468601630f6b5c102, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jungle_north_island_fa3
+    second: {fileID: 2100000, guid: 259f3fbbed5bd454491d8c49181c804a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jungle_west_island_a1
+    second: {fileID: 2100000, guid: 9a98a5736816e3c4491f30c7c93db1b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert175152
+    second: {fileID: 2100000, guid: f2a71179567e85247bc281d16bc706b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert176391
+    second: {fileID: 2100000, guid: 0eb74e5a90532e742a95be30a94ba629, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert176398
+    second: {fileID: 2100000, guid: 15de5dd024b3b434ca1eb457576aa51d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177148
+    second: {fileID: 2100000, guid: 8f6653cb52faaf24ca71f5885060a315, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177183
+    second: {fileID: 2100000, guid: 29d6fc9649ec5fa4aac85a617e4e155d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177187
+    second: {fileID: 2100000, guid: e3277e85c8a33ed4bbb808c0f7596066, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177189
+    second: {fileID: 2100000, guid: d719ae877b32d0646a9690173d040c2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177282
+    second: {fileID: 2100000, guid: 42c55654337b4b8449aa679a6d92642d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177284
+    second: {fileID: 2100000, guid: c47c6391caebdb94589daa118ba465ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177290
+    second: {fileID: 2100000, guid: 5c1b6adac8fe255428c7413ea7f6fc92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177293
+    second: {fileID: 2100000, guid: c3b232d711a76104897a949144d2a378, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177295
+    second: {fileID: 2100000, guid: 96e11f39cc31d454bb14d6554be94fc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177299
+    second: {fileID: 2100000, guid: 991b7c9eae533df4eb1d281b4945ee2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177300
+    second: {fileID: 2100000, guid: aa7f8c435c722df46b32183cb032122b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177301
+    second: {fileID: 2100000, guid: e1cad07ae81f9624097c4d0349326c36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177302
+    second: {fileID: 2100000, guid: 7062f29a08a31e24085959588e66f445, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177303
+    second: {fileID: 2100000, guid: f1f9bc8f933c7fe48a6f18689c05946f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177304
+    second: {fileID: 2100000, guid: 7dc547ddf080a7c458702c7b4e923002, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177305
+    second: {fileID: 2100000, guid: 1ae68cc9168f4544b91013c082a7659a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert177306
+    second: {fileID: 2100000, guid: 6917c422f8a560741b8c9baa6cc1ca96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: a05fa083cd174974ebed730663aee4ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: 8cb8b9400701ac34da93ba69f6f59bc8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert5
+    second: {fileID: 2100000, guid: 2e0c0d8009a135d46902ba58105b40ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lm_Grnd_Terrain_A_Shader
+    second: {fileID: 2100000, guid: c6fd1fe47860aa844a886b84ab694186, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lm_Grnd_Terrain_C_Shader3
+    second: {fileID: 2100000, guid: 993d97d3e767f634587e0737427e71e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lm_Grnd_Terrain_L_Shader2
+    second: {fileID: 2100000, guid: 36f4596d396a09c4b81087a00ff6f1e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lm_Grnd_Terrain_T_Shader2
+    second: {fileID: 2100000, guid: a71b5bf708b7419458896905729cdc73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lm_Grnd_Terrain_W_Shader3
+    second: {fileID: 2100000, guid: 92e512f0cd584a344b7a0292780a3329, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pally_base_side_walls_bot3
+    second: {fileID: 2100000, guid: 5c6e8798969fb9340a43508a7cafb468, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pally_platform
+    second: {fileID: 2100000, guid: cf8ed8d1b037e88458a2aa0c8d9e70b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paly_south_base_edge_wall_right_a5
+    second: {fileID: 2100000, guid: 252cf30a2b6ffa8498bdbca8c3a8dced, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_east_a1
+    second: {fileID: 2100000, guid: 4169fb81d96fca148adb73f5a89bf706, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_east_b1
+    second: {fileID: 2100000, guid: f9f920d20115baf4e923448e4535f278, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_east_c1
+    second: {fileID: 2100000, guid: 5879d16dbbabcfd4ba785ab12f6a12f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_east_c20
+    second: {fileID: 2100000, guid: 061246d69439ea54192a9e0a4f9ef40b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_east_d15
+    second: {fileID: 2100000, guid: 5fa4b0bfde09e6544a97ef9dd9a6e37d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_east_g
+    second: {fileID: 2100000, guid: 5cdc06e15a80b5c40a30e9a97f0c5c48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_north_base_b4
+    second: {fileID: 2100000, guid: b9c2cdf8374c52545bbe891f2bd67cbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_north_d13
+    second: {fileID: 2100000, guid: 44cc910f6fbc6344faf61582c3ee3830, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_north_g
+    second: {fileID: 2100000, guid: 73e3432261ff3e8408d4841efe91f7db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_north_g35
+    second: {fileID: 2100000, guid: 31439b7eaa5922841b119682d537e8f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_north_j11
+    second: {fileID: 2100000, guid: e3940eedefe5e0a4fb73896fe1c52cf4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_north_k
+    second: {fileID: 2100000, guid: 151a1e0d62fbe3d49a8a691752f623f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_north_l11
+    second: {fileID: 2100000, guid: cd3dec472a1d63a4a8ddc3a747d8bc91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_north_l9
+    second: {fileID: 2100000, guid: 2c3b211b577254d43b7be2abddefba3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_north_m2
+    second: {fileID: 2100000, guid: 8de09924f72ddfe4eb476746d46f3e4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_south_e11
+    second: {fileID: 2100000, guid: 81d4e7faf9b3cba41b8c8eb68f02bbb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_south_e9
+    second: {fileID: 2100000, guid: 81157ba3fdaca6c4eb7bd77980c909a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_south_f1
+    second: {fileID: 2100000, guid: 7ec2c08fbe4bd6b4a8aee7521ca0592f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_south_f6
+    second: {fileID: 2100000, guid: e65995b5cfa8fcf43a7ccd443730eff6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_south_g_combined2
+    second: {fileID: 2100000, guid: 6a9452d85d37070478c2a85770af6e1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_south_walls_f8
+    second: {fileID: 2100000, guid: 52963373fec87084496b715e77604589, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_southeast_a4
+    second: {fileID: 2100000, guid: c8a036a3e2f58164eab495f2d43c9d67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_southeast_a6
+    second: {fileID: 2100000, guid: d074dfcb8fda42446a6ddc619c374835, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_southeast_a8
+    second: {fileID: 2100000, guid: d94248dd7b463c044b18f55d843bcfce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_southeast_c4
+    second: {fileID: 2100000, guid: ad32010626ba42a49b03ab22fed31ffa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_southeast_c6
+    second: {fileID: 2100000, guid: 80382786b220a8249a3c715cc7ce4af4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_southeast_d2SG2
+    second: {fileID: 2100000, guid: 9622d65ba9e9e2b4ea01f0b42749cec4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_southeast_eb2
+    second: {fileID: 2100000, guid: afe2b621406a6034ca834d996f60f008, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_west_a4
+    second: {fileID: 2100000, guid: 73ddf9066c8d40d44a3c07a54a572e31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_west_c4
+    second: {fileID: 2100000, guid: f8fdf5970cbda244480f8d3c32a2af75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_west_d24
+    second: {fileID: 2100000, guid: 44887e7b2c869224993ceddce0e8b7e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_west_d26
+    second: {fileID: 2100000, guid: 02369b118192e5b4697b1de018d17493, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: periph_west_e1
+    second: {fileID: 2100000, guid: 48044dcab1458f846bc02d52b55d2f4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: south_platform_periph_coll2
+    second: {fileID: 2100000, guid: 374575fade2d2f742a172f200392f420, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: splitfilewip_2256_grnd_terrain_s2
+    second: {fileID: 2100000, guid: 2f87ae709cd19b747b8ae94cac4df270, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: splitfilewip_2256_hing_temp_LM_Grnd_Terrain_R_Shader2
+    second: {fileID: 2100000, guid: 5af28d0181cdf864eae54f7c05bf4f2d, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
